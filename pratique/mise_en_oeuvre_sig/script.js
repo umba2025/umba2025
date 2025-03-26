@@ -67,19 +67,20 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         var hydrographiesSource = {
-        type: 'shapefile',
-        data: 'https://donnees.montreal.ca/fr/dataset/1e63665b-0f63-4c05-90b1-49115de51b0e/resource/0714737f-2afa-40d9-b82d-3811eb5fa526/download/mern_dra_hydrographie_2020_shapefile.zip'
-                };
-        var hydrographieLayer = {
-        id: 'hydrographie',
-        type: 'fill',
-        source: 'hydrographiesSource', // Assurez-vous que le nom de la source correspond ici
-        paint: {
-        'fill-color': 'blue',
-        'fill-opacity': 0.5,
-        'fill-outline-color': '#000'
-                                }
+            type: 'geojson',
+            data: 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/hydrographi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson'
         };
+        
+        var hydrographieLayer = {
+            id: 'hydrographie',
+            type: 'line', // Utilisation de 'line' si c'est un cours d'eau
+            source: hydrographiesSource, // Pas de guillemets autour du nom de la source
+            paint: {
+                'line-color': 'blue', // Changement en 'line-color' pour un type 'line'
+                'line-width': 2 // Ajustement de l'épaisseur du tracé
+            }
+        };
+        
 
 
 
