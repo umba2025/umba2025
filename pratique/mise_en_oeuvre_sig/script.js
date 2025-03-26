@@ -66,20 +66,6 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
         };
 
-        var hydrographiesSource = {
-            type: 'geojson',
-            data: 'https://services6.arcgis.com/133a00biU9FItiqJ/arcgis/rest/services/hydrographi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=geojson'
-        };
-        
-        var hydrographieLayer = {
-            id: 'hydrographie',
-            type: 'line', // Utilisation de 'line' si c'est un cours d'eau
-            source: hydrographiesSource, // Pas de guillemets autour du nom de la source
-            paint: {
-                'line-color': 'blue', // Changement en 'line-color' pour un type 'line'
-                'line-width': 2 // Ajustement de l'épaisseur du tracé
-            }
-        };
         
 
 
