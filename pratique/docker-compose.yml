@@ -15,3 +15,5 @@ services:
     volumes:
       - ./geo_visualisation:/usr/share/nginx/html:ro
     restart: always
+
+
