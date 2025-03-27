@@ -66,8 +66,28 @@ document.addEventListener('DOMContentLoaded', function() {
                                 }
         };
 
+        var quartiersSource = {
+            type: 'geojson',
+            data: 'https://donnees.montreal.ca/dataset/f38c91a1-e33f-4475-a112-3b84b1c60c1e/resource/a80e611f-5336-4306-ba2a-fd657f0f00fa/download/quartierreferencehabitation.geojson'
+        };
         
-
+        var quartierLayer = {
+            id: 'quartier',
+            type: 'fill',
+            source: quartiersSource, // On fait directement référence à l'objet source
+            paint: {
+                'fill-color': '#ccc',
+                'fill-opacity': 0.5,
+                'fill-outline-color': 'red'
+            }
+        };
+        
+        // Ajout à la carte Mapbox
+        map.on('load', function () {
+            map.addSource('quartiers', quartiersSource);
+            map.addLayer(quartierLayer);
+        });
+        
 
 
 map.on('load', function () {
@@ -77,10 +97,12 @@ map.on('load', function () {
             });
 
 map.on('load', function () {
-  // Hydrographie
-  map.addSource('hydrographiesSource', hydrographiesSource); // Ajout de la source
-  map.addLayer(hydrographieLayer); // Ajout de la couche des arrondissements
+  // quartier
+  map.addSource('quartiersSource', quartiersSource); // Ajout de la source
+  map.addLayer(quartierLayer); // Ajout de la couche des arrondissements
             });
+
+
 
 
 });
