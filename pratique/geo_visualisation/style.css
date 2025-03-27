@@ -53,3 +53,26 @@ body {
     margin: 0; /* Supprime les marges par défaut du h1 pour un centrage précis */
     padding: 0; /* Supprime les rembourrages par défaut du h1 */
 }
+
+
+
+
+
+
+  .app-menu {
+    background: #002D62;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    width: 70px;
+    top: 68px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    z-index: 1000;
+  }
+  
+  .app-icon {
+    background-color: #F04F50;
+    border-color: rgba(255,255,255,0.2);
+    border-width: 5px;
+
+ 

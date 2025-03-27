@@ -21,8 +21,16 @@
     <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
 </head>
 <body>
-    <div class = "main-title-container"><h1>ZONES VULNERABLE À L'INONDATION | MONTRÉAL </h1></div>
+
+    <div class = "main-title-container"><h1>ZONES VULNERABLE À L'INONDATION | MONTRÉAL </h1></div> 
+
+    
+
+    
+        
     <div class="container-fluid">
+            
+
         <div class="row h-100">
             <div class="col-md-9 p-0">
                  <!-- Un bouton pour charger les données -->
@@ -60,8 +68,11 @@
                              <option value="moderate_exercise">Faible</option>
                         </select>
                     </div>
-                    <div id = "button-m"><button onclick="loadData()">Charger les données</button></div>
-
+                    <a href="https://montreal.ca/sujets/inondations" target="_blank">
+                        <button type="button" class="btn btn-primary">Infos</button>
+                      </a>
+                    <button type="button" class="btn btn-secondary">Telecharge les couches </button>
+            
                 </div>
             </div>
         </div>

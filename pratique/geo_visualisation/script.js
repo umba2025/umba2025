@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         center: [-73.55, 45.55], // Coordonnées de Montréal [longitude, latitude]
-        zoom: 10
+        zoom: 9
     });
 
 
@@ -60,6 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // Définition des couches
+
+
     var arrondissementsLayer = {
         id: 'arrondissements',
         type: 'fill',
@@ -99,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
+ 
     // Gérer les cases à cocher pour afficher/masquer les couches
     document.getElementById('neighborhoods').addEventListener('change', function (e) {
         map.setLayoutProperty('arrondissements', 'visibility', e.target.checked ? 'visible' : 'none');
@@ -107,5 +110,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('quartier').addEventListener('change', function (e) {
         map.setLayoutProperty('quartiers', 'visibility', e.target.checked ? 'visible' : 'none');
     });
+
+
+
+
+    // Gestion des boutons
+
+    
 
 });
