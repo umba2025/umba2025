@@ -48,88 +48,64 @@ document.addEventListener('DOMContentLoaded', function() {
         inondationdropdown.disabled = false;
     }, 1000); // Simule un chargement avant d'activer
 
-      // Ajouter la couche
-
-        var arrondissementsSource = {
+    // Définition des sources de données
+    var arrondissementsSource = {
         type: 'geojson',
         data: 'https://donnees.montreal.ca/dataset/9797a946-9da8-41ec-8815-f6b276dec7e9/resource/e18bfd07-edc8-4ce8-8a5a-3b617662a794/download/limites-administratives-agglomeration.geojson'
-        };
+    };
 
-        var arrondissementsLayer = {
+    var quartiersSource = {
+        type: 'geojson',
+        data: 'https://donnees.montreal.ca/dataset/f38c91a1-e33f-4475-a112-3b84b1c60c1e/resource/a80e611f-5336-4306-ba2a-fd657f0f00fa/download/quartierreferencehabitation.geojson'
+    };
+
+    // Définition des couches
+    var arrondissementsLayer = {
         id: 'arrondissements',
         type: 'fill',
-        source: 'arrondissementsSource', // Assurez-vous que le nom de la source correspond ici
+        source: 'arrondissementsSource',
         paint: {
-        'fill-color': '#ccc',
-        'fill-opacity': 0.5,
-        'fill-outline-color': '#000'
-                                }
-        };
+            'fill-color': '#ccc',
+            'fill-opacity': 0.5,
+            'fill-outline-color': '#000'
+        },
+        layout: {
+            'visibility': 'visible' // Affiché par défaut
+        }
+    };
 
-        var quartiersSource = {
-            type: 'geojson',
-            data: 'https://donnees.montreal.ca/dataset/f38c91a1-e33f-4475-a112-3b84b1c60c1e/resource/a80e611f-5336-4306-ba2a-fd657f0f00fa/download/quartierreferencehabitation.geojson'
-        };
-        
-        var quartierLayer = {
-            id: 'quartier',
-            type: 'fill',
-            source: quartiersSource, // On fait directement référence à l'objet source
-            paint: {
-                'fill-color': '#ccc',
-                'fill-opacity': 0.5,
-                'fill-outline-color': 'red'
-            }
-        };
-        
-        
-
-
-        // Ajout à la carte Mapbox
-        map.on('load', function () {
-            map.addSource('quartiers', quartiersSource);
-            map.addLayer(quartierLayer);
-        });
-        
+    var quartierLayer = {
+        id: 'quartiers',
+        type: 'fill',
+        source: 'quartiersSource',
+        paint: {
+            'fill-color': '#ccc',
+            'fill-opacity': 0.5,
+            'fill-outline-color': 'red'
+        },
+        layout: {
+            'visibility': 'visible' // Affiché par défaut
+        }
+    };
 
 
-map.on('load', function () {
-  // Arrondissements
-  map.addSource('arrondissementsSource', arrondissementsSource); // Ajout de la source
-  map.addLayer(arrondissementsLayer); // Ajout de la couche des arrondissements
-            });
+    // Ajout des sources et des couches à la carte une fois qu'elle est chargée
+    map.on('load', function () {
+        map.addSource('arrondissementsSource', arrondissementsSource);
+        map.addLayer(arrondissementsLayer);
 
-map.on('load', function () {
-  // quartier
-  map.addSource('quartiersSource', quartiersSource); // Ajout de la source
-  map.addLayer(quartierLayer); // Ajout de la couche des arrondissements
-            });
+        map.addSource('quartiersSource', quartiersSource);
+        map.addLayer(quartierLayer);
+    });
 
 
- // Gérer les cases à cocher pour afficher/masquer les couches
- document.getElementById('neighborhoods').addEventListener('change', function (e) {
-    map.setLayoutProperty('arrondissements', 'visibility', e.target.checked ? 'visible' : 'none');
-});
+    // Gérer les cases à cocher pour afficher/masquer les couches
+    document.getElementById('neighborhoods').addEventListener('change', function (e) {
+        map.setLayoutProperty('arrondissements', 'visibility', e.target.checked ? 'visible' : 'none');
+    });
 
-document.getElementById('districts').addEventListener('change', function (e) {
-    map.setLayoutProperty('quartiers', 'visibility', e.target.checked ? 'visible' : 'none');
-});
-
-
+    document.getElementById('quartier').addEventListener('change', function (e) {
+        map.setLayoutProperty('quartiers', 'visibility', e.target.checked ? 'visible' : 'none');
+    });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
