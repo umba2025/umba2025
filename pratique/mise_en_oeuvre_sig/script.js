@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         },
         center: [-73.55, 45.55], // Coordonnées de Montréal [longitude, latitude]
-        zoom: 9
+        zoom: 10
     });
 
 
@@ -82,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
+        
+
+
         // Ajout à la carte Mapbox
         map.on('load', function () {
             map.addSource('quartiers', quartiersSource);
@@ -102,6 +105,15 @@ map.on('load', function () {
   map.addLayer(quartierLayer); // Ajout de la couche des arrondissements
             });
 
+
+ // Gérer les cases à cocher pour afficher/masquer les couches
+ document.getElementById('neighborhoods').addEventListener('change', function (e) {
+    map.setLayoutProperty('arrondissements', 'visibility', e.target.checked ? 'visible' : 'none');
+});
+
+document.getElementById('districts').addEventListener('change', function (e) {
+    map.setLayoutProperty('quartiers', 'visibility', e.target.checked ? 'visible' : 'none');
+});
 
 
 
